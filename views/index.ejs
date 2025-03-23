@@ -24,7 +24,10 @@
             <button type="submit" class="cursor-pointer text-lg bg-blue-300 p-[2%]  rounded-md ">Shorten</button>
             <p class="text-2xl">Shortened Urls</p>
             <ul class="shorturls p-[3%] w-[80%] text-blue-700">
-{{shorturls}}
+               <% for (const [shortCode, url] of Object.entries(links)) { %>
+                             <%   const truncatedUrl = url.length > 25 ? url.substring(0, 20) + "....." : url; %>
+                                  <li><a href="/<%= shortCode %>" target="_blank"><%=host %>/<%=shortCode %></a> → <span style="color:black;"><%=truncatedUrl %></span></li>
+               <% } %>
                 </ul>     
             </div>
         </form>
